@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../components/head"); %>
+</head>
+<body>
+    <header>
+        <%- include("../components/header"); %>
+    </header>
+    <h1 style="text-align: center; margin: 0.5em 0 1em 0;">Add Notes</h1>
+
+    <div class="container">
+        <form action="/addnotes" method="post" enctype="application/x-www-form-urlencoded">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" id="title" placeholder="some title">
+              </div>
+              <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea class="form-control" id="content" name="content" rows="3" placeholder="some title"></textarea>
+              </div>
+              <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <%- include("../components/head"); %>
+</head>
+
+<body>
+    <header>
+        <%- include("../components/header"); %>
+    </header>
+    <h1 style="text-align: center; margin: 0.5em 0 1em 0;">Notes App</h1>
+
+
+    <div style="margin: 1em 0 1em 0;"> 
+        <%if (msg) { %>
+            <h4 style="text-align: center; margin: 0.5em 0 1em 0; color: green;"><%= msg %></h4>
+        <% } %>
+    </div>
+
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Content</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+              </tr>
+        </thead>
+        <tbody>
+        <% rows.map((item) => { %>
+            <tr>
+                <th scope="row"><%= item._id %></th>
+                <td><%= item.title %></td>
+                <td><%= item.content %></td>
+                <td><a href="editNote/<%= item._id %>" ><button type="button"  class="btn btn-light btn-sm">Edit</button></a></td>
+                <td><a onclick="return confirm('Are you sure ?')" href="deleteNote/<%= item._id %>" ><button type="button"  class="btn btn-dark btn-sm">Delete</button></a></td>
+              </tr>
+       <% }) %>
+           
+        </tbody>
+      </table>
+    
+</body>
+</html>

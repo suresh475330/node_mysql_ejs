@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
+require("dotenv").config()
 const db = require("./db/connect")
-const notesRouter = require("./routes/notes")
 
 app.set("view engine","ejs")
 app.use(express.urlencoded({extended : true}))
@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended : true}))
 
 app.get("/", async (req,res)=>{
     const [rows] = await db.query(`SELECT * FROM notes`)
-    const msg = "index render succes" 
+    const msg = "index rend succes" 
     res.status(200).render("pages/index",{rows,msg})
 })
 
@@ -52,7 +52,7 @@ app.post("/addnotes", async (req,res) => {
 
 
 app.post("/editNote/:id", async (req,res) => {
-    console.log(req.params.id);
+
     const {title , content} = req.body
     const _id =  Number(req.params.id)
 
